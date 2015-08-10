@@ -11,7 +11,7 @@ def main():
         one_time = 1 #Variable to ensure that the website is only checked once every five minutes
         now = datetime.now().time().isoformat().split(':')
         if int(now[1]) % 5 == 0:
-            if one_time == 1
+            if one_time == 1:
                 cs3205()
                 cs2330()
                 econ2020()
@@ -19,7 +19,6 @@ def main():
 
         if int(now[1]) % 10 == 6 or int(now[1]) % 10 == 1:
             one_time = 1
-
 
 def econ2020():
     class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=Economics")
