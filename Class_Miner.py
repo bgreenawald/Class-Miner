@@ -7,11 +7,13 @@ from urllib import request
 import ctypes  # An included library with Python install.
 
 def main():
+    one_time = 1 #Variable to ensure that the website is only checked once every five minutes
     while(True):
-        one_time = 1 #Variable to ensure that the website is only checked once every five minutes
         now = datetime.now().time().isoformat().split(':')
         if int(now[1]) % 5 == 0:
             if one_time == 1:
+                print("Searching")
+                print(str(datetime.now().isoformat()))
                 cs3205()
                 cs2330()
                 econ2020()
@@ -21,20 +23,34 @@ def main():
             one_time = 1
 
 def econ2020():
-    class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=Economics")
+    try:
+        class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=Economics")
+    except:
+        urllib.error.URLError
+        return 0
+
     for line in class_file:
         if 'ECON2020' in str(line) and 'Lecture' in str(line) and 'Open' in str(line):
             ctypes.windll.user32.MessageBoxA(0, "O", "E",1)
 
 def cs3205():
-    class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=CompSci")
+    try:
+        class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=CompSci")
+    except:
+        urllib.error.URLError
+        return 0
+
     for line in class_file:
         if 'CS3205' in str(line) and 'Open' in str(line):
             ctypes.windll.user32.MessageBoxA(0, "O", "C",1)
 
-
 def cs2330():
-    class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=CompSci")
+    try:
+        class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=CompSci")
+    except:
+        urllib.error.URLError
+        return 0
+
     counter = 0
     for line in class_file:
         if 'CS2330' in str(line) and 'Enrollment Requirements: Undergraduate Engineering' not in str(line):
