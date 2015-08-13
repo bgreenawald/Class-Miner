@@ -27,10 +27,13 @@ def econ2020():
         class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=Economics")
     except:
         urllib.error.URLError
+        print("Econ 2020 failed")
         return 0
 
     for line in class_file:
         if 'ECON2020' in str(line) and 'Lecture' in str(line) and 'Open' in str(line):
+            ctypes.windll.user32.MessageBoxA(0, "O", "E",1)
+        if 'ECON2020' in str(line) and '200 / 200' not in str(line):
             ctypes.windll.user32.MessageBoxA(0, "O", "E",1)
 
 def cs3205():
@@ -38,10 +41,13 @@ def cs3205():
         class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=CompSci")
     except:
         urllib.error.URLError
+        print("CS 3205 failed")
         return 0
 
     for line in class_file:
         if 'CS3205' in str(line) and 'Open' in str(line):
+            ctypes.windll.user32.MessageBoxA(0, "O", "C",1)
+        if 'CS3205' in str(line) and '100 / 100' in str(line):
             ctypes.windll.user32.MessageBoxA(0, "O", "C",1)
 
 def cs2330():
@@ -49,6 +55,7 @@ def cs2330():
         class_file = urllib.request.urlopen("https://rabi.phys.virginia.edu/mySIS/CS2/page.php?Semester=1158&Type=Group&Group=CompSci")
     except:
         urllib.error.URLError
+        print("CS 2330 failed")
         return 0
 
     counter = 0
