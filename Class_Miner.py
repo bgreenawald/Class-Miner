@@ -47,7 +47,7 @@ def cs3205():
     for line in class_file:
         if 'CS3205' in str(line) and 'Open' in str(line):
             ctypes.windll.user32.MessageBoxA(0, "O", "C",1)
-        if 'CS3205' in str(line) and '100 / 100' not in str(line):
+        if 'CS3205' in str(line) and '100 / 100' not in str(line) and 'Lecture' in str(line):
             ctypes.windll.user32.MessageBoxA(0, "O", "C",1)
 
 def cs2330():
